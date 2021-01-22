@@ -1,7 +1,8 @@
 import {Sequelize} from 'sequelize';
 
-const DBURL = process.env.DBURL || "postgres://kanban:kanban@localhost/kanban";
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 
-const sequelize: Sequelize = new Sequelize(DBURL);
+const sequelize: Sequelize = new Sequelize(config);
 
 export default sequelize;
